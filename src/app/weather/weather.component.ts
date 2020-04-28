@@ -11,6 +11,7 @@ export class WeatherComponent implements OnInit {
   @Input() lat;
   @Input() lng;
   public weatherSearchForm: FormGroup;
+  public weatherDetails;
   constructor(
     private formBuilder: FormBuilder,
     private openweatherapiService: OpenWeatherApiService
@@ -19,9 +20,9 @@ export class WeatherComponent implements OnInit {
   ngOnInit() {
     this.weatherSearchForm = this.formBuilder.group({ location: [''] });
   }
-  sendToAPI(formValues) {
+  sendToAPI() {
     this.openweatherapiService
-      .getWeather(formValues.location)
-      .subscribe((data) => console.log(data));
+      .getWeather(this.lat, this.lng)
+      .subscribe((data) => (this.weatherDetails = data));
   }
 }
