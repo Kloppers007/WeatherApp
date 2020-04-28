@@ -6,6 +6,8 @@ import { WeatherComponent } from './weather/weather.component';
 import { RouterModule } from '@angular/router';
 import { allAppRoutes } from './routes';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { OpenWeatherApiService } from './openweatherapi.service';
 
 @NgModule({
   declarations: [AppComponent, WeatherComponent],
@@ -13,8 +15,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     RouterModule.forRoot(allAppRoutes),
     ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [OpenWeatherApiService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
